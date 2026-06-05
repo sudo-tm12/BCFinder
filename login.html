@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login — BC CourseFinder</title>
+    <link href="style.css" rel="stylesheet">
+    <link href="auth.css" rel="stylesheet">
+</head>
+
+<body>
+    <nav class="nav">
+        <a href="index.html" style="display:flex;align-items:center;gap:14px;text-decoration:none;color:inherit;">
+            <div class="nav-mark">BC</div>
+            <div class="nav-brand">
+                <h1>BC CourseFinder™</h1>
+                <p>Belgium Campus iTversity · AI Career Guide</p>
+            </div>
+        </a>
+    </nav>
+
+    <div class="auth-container" id="authContainer">
+        <div class="auth-hero">
+            <div class="hero-tag">✦ Powered by Hybrid AI Engine</div>
+            <h2>Find Your IT Path at<br>Belgium Campus</h2>
+            <p>Enter your Matric results to get instant, personalised course recommendations — or ask me anything about
+                IT qualifications, careers, and learnerships in South Africa.</p>
+            <div class="hero-stats">
+                <div>
+                    <div class="hero-stat-val">12+</div>
+                    <div class="hero-stat-lbl">Qualifications</div>
+                </div>
+                <div>
+                    <div class="hero-stat-val">4</div>
+                    <div class="hero-stat-lbl">HEQSF levels</div>
+                </div>
+                <div>
+                    <div class="hero-stat-val">APS</div>
+                    <div class="hero-stat-lbl">Smart matching</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="auth-card" id="authCard">
+            <div class="form-tabs">
+                <button type="button" id="loginTab" class="tab-button active">Login</button>
+                <button type="button" id="registerTab" class="tab-button">Create profile</button>
+            </div>
+
+            <div id="formAlert" class="alert error">
+                <span id="alertText">Please sign in or create a profile to continue.</span>
+            </div>
+
+            <form id="loginForm" novalidate>
+                <h2>Login to BC CourseFinder</h2>
+                <div class="input-group">
+                    <label for="login-email">Email</label>
+                    <input id="login-email" name="login-email" type="email" placeholder="you@example.com"
+                        autocomplete="email" required>
+                    <div id="loginEmailHint" class="input-hint">Enter a valid email address.</div>
+                </div>
+
+                <div class="input-group password-wrap">
+                    <label for="login-password">Password</label>
+                    <input id="login-password" name="login-password" type="password" placeholder="Enter password"
+                        required>
+                    <button type="button" class="pw-toggle" id="pwToggle" aria-label="Show password"
+                        title="Show password">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" id="eyeIcon">
+                            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                            <circle cx="12" cy="12" r="3"></circle>
+                        </svg>
+                    </button>
+                    <div id="loginPasswordHint" class="input-hint">Enter your password.</div>
+                </div>
+
+                <button type="submit" class="auth-btn" id="loginSubmitBtn">Sign in</button>
+            </form>
+
+            <form id="registerForm" class="hidden" novalidate>
+                <h2>Create a New Profile</h2>
+                <div class="input-group">
+                    <label for="register-name">Full name</label>
+                    <input id="register-name" name="register-name" type="text" placeholder="Your full name" required>
+                    <div id="registerNameHint" class="input-hint">Enter your full name.</div>
+                </div>
+                <div class="input-group">
+                    <label for="register-email">Email</label>
+                    <input id="register-email" name="register-email" type="email" placeholder="you@example.com"
+                        autocomplete="email" required>
+                    <div id="registerEmailHint" class="input-hint">Enter a valid email address.</div>
+                </div>
+                <div class="input-group password-wrap">
+                    <label for="register-password">Password</label>
+                    <input id="register-password" name="register-password" type="password" placeholder="Create password"
+                        required>
+                    <button type="button" class="pw-toggle" id="pwToggle2" aria-label="Show password"
+                        title="Show password">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" id="eyeIcon2">
+                            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                            <circle cx="12" cy="12" r="3"></circle>
+                        </svg>
+                    </button>
+                    <div id="registerPwHint" class="input-hint">Password must be at least 8 characters.</div>
+                </div>
+                <div class="input-group password-wrap">
+                    <label for="register-confirm">Confirm password</label>
+                    <input id="register-confirm" name="register-confirm" type="password" placeholder="Repeat password"
+                        required>
+                    <button type="button" class="pw-toggle" id="pwToggle3" aria-label="Show password"
+                        title="Show password">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" id="eyeIcon3">
+                            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                            <circle cx="12" cy="12" r="3"></circle>
+                        </svg>
+                    </button>
+                    <div id="registerMatchHint" class="input-hint">Passwords must match.</div>
+                </div>
+
+                <button type="submit" class="auth-btn" id="registerSubmitBtn">Create profile</button>
+            </form>
+
+            <div class="auth-link">
+                <p id="authHelpText">Don’t have an account yet? Create a new profile to access the chatbot.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="chat-container hidden" id="chatSection">
+        <div class="chat-prompts">
+            <button type="button" class="prompt-pill" onclick="showCourseList()">All courses & APS</button>
+            <button type="button" class="prompt-pill" onclick="showDiplomaVsDegree()">Diploma vs Degree</button>
+            <button type="button" class="prompt-pill" onclick="showCareerPaths()">Career paths</button>
+            <button type="button" class="prompt-pill" onclick="showLearnerships()">Learnerships & bursaries</button>
+            <button type="button" class="prompt-pill" onclick="showCybersecurity()">Cybersecurity requirements</button>
+            <button type="button" class="prompt-pill" onclick="showOnlineStudy()">Online study</button>
+        </div>
+        <div class="chat-toolbar">
+            <div class="engine-badge">
+                <div class="dot"></div> Hybrid AI Engine
+            </div>
+            <div class="engine-badge" style="margin-left:6px">📚 Rule-based + Claude API</div>
+            <button type="button" id="logoutBtn" class="logout-btn">Logout</button>
+            <div class="thinking-badge" id="thinking-badge">
+                <div class="thinking-spinner"></div>
+                Thinking…
+            </div>
+        </div>
+        <div class="messages" id="messages"></div>
+        <div class="input-area">
+            <div class="input-pill">
+                <textarea id="input" rows="1" placeholder="Ask about courses, APS, careers, learnerships…"></textarea>
+                <button class="send-btn" id="send-btn" onclick="sendMessage()">
+                    <svg viewBox="0 0 24 24">
+                        <path
+                            d="M3.478 2.405a.75.75 0 0 0-.926.94l2.432 7.905H13.5a.75.75 0 0 1 0 1.5H4.984l-2.432 7.905a.75.75 0 0 0 .926.94 60.519 60.519 0 0 0 18.445-8.986.75.75 0 0 0 0-1.218A60.517 60.517 0 0 0 3.478 2.405Z" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="auth.js"></script>
+    <script src="javaScript.js"></script>
+
+    <script>
+      /*
+        Landing-page hand-off.
+        index.html stores either bc_aps_pending (from the APS calculator) or
+        bc_prog_pending (from clicking a programme row) in sessionStorage before
+        redirecting here. Once the user authenticates and #chatSection becomes
+        visible, we read the stored value, clear it, and auto-fire the query.
+      */
+      (function () {
+        var pendingAps  = sessionStorage.getItem('bc_aps_pending');
+        var pendingProg = sessionStorage.getItem('bc_prog_pending');
+        if (!pendingAps && !pendingProg) return;
+
+        function buildQuery() {
+          if (pendingAps)  return 'My APS score is ' + pendingAps + '. What IT courses at Belgium Campus would suit me?';
+          if (pendingProg) return 'Tell me about the ' + pendingProg + ' at Belgium Campus — entry requirements, duration, and career outcomes.';
+          return null;
+        }
+
+        function fireQuery() {
+          sessionStorage.removeItem('bc_aps_pending');
+          sessionStorage.removeItem('bc_prog_pending');
+          var query = buildQuery();
+          if (!query) return;
+          /* Wait for the boot greeting (javaScript.js fires it after 400 ms) */
+          setTimeout(function () {
+            if (typeof inputEl !== 'undefined' && inputEl &&
+                typeof sendMessage === 'function') {
+              inputEl.value = query;
+              sendMessage();
+            }
+          }, 900);
+        }
+
+        var chatSection = document.getElementById('chatSection');
+        if (!chatSection) return;
+
+        if (!chatSection.classList.contains('hidden')) {
+          /* Already logged in — chat is visible on page load */
+          fireQuery();
+        } else {
+          /* Wait for auth.js to reveal #chatSection after successful login */
+          var observer = new MutationObserver(function (mutations) {
+            for (var i = 0; i < mutations.length; i++) {
+              if (!chatSection.classList.contains('hidden')) {
+                observer.disconnect();
+                fireQuery();
+                break;
+              }
+            }
+          });
+          observer.observe(chatSection, { attributes: true, attributeFilter: ['class'] });
+        }
+      })();
+    </script>
+</body>
+
+</html>

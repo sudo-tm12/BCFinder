@@ -1,0 +1,351 @@
+
+/* ═══════════════════════════════════════════════════
+   AUTH.CSS — Login / Registration / Chat layout
+   Used exclusively by login.html
+═══════════════════════════════════════════════════ */
+
+/* ── Utility ── */
+.hidden { display: none !important; }
+
+/* ── Auth container: two-column layout ── */
+.auth-container {
+  display: grid;
+  grid-template-columns: 1fr 500px;
+  gap: 30px;
+  width: 100%;
+  max-width: 1060px;
+  padding: 28px 24px 32px;
+  margin: 0 auto;
+  align-items: center;
+  flex: 1;
+}
+
+/* ── Auth hero panel (left column) ── */
+.auth-hero {
+  background: var(--bc-navy);
+  border-radius: var(--r-xl);
+  padding: 52px 44px;
+  position: relative;
+  overflow: hidden;
+  align-self: stretch;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.auth-hero::before {
+  content: '';
+  position: absolute;
+  top: -80px; right: -60px;
+  width: 320px; height: 320px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(201,168,76,.18) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.auth-hero::after {
+  content: '';
+  position: absolute;
+  bottom: -80px; left: -60px;
+  width: 280px; height: 280px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(37,99,176,.22) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.auth-hero h2 {
+  font-family: 'DM Serif Display', Georgia, serif;
+  font-size: 42px;
+  line-height: 1.15;
+  color: #fff;
+  letter-spacing: -0.6px;
+  margin-bottom: 14px;
+  position: relative;
+}
+
+.auth-hero p {
+  font-size: 15px;
+  line-height: 1.7;
+  color: rgba(255,255,255,.55);
+  max-width: 380px;
+  position: relative;
+}
+
+/* ── Auth card (right column) ── */
+.auth-card {
+  background: var(--surface);
+  border-radius: var(--r-xl);
+  padding: 40px;
+  box-shadow: var(--shadow-xl);
+  align-self: start;
+  animation: authCardIn 0.4s ease-out both;
+}
+
+.auth-card h2 {
+  font-family: 'DM Serif Display', Georgia, serif;
+  font-size: 28px;
+  color: var(--text-primary);
+  letter-spacing: -0.4px;
+  margin-bottom: 20px;
+}
+
+@keyframes authCardIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Tab switcher ── */
+.form-tabs {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 20px;
+}
+
+.tab-button {
+  flex: 1;
+  padding: 10px 12px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--surface);
+  color: var(--text-primary);
+  font-family: inherit;
+  font-size: 13.5px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s, border-color 0.15s;
+}
+
+.tab-button.active {
+  background: var(--bc-navy);
+  color: #fff;
+  border-color: rgba(15,40,71,.2);
+}
+
+.tab-button:not(.active):hover {
+  background: var(--surface-2);
+}
+
+/* ── Alert banner ── */
+.alert {
+  display: none;
+  align-items: flex-start;
+  gap: 8px;
+  padding: 10px 14px;
+  border-radius: 8px;
+  font-size: 13px;
+  margin-bottom: 16px;
+  border: 1px solid transparent;
+  line-height: 1.5;
+}
+
+.alert.visible { display: flex; }
+
+.alert.error {
+  background: #fef2f2;
+  color: #dc2626;
+  border-color: rgba(220,38,38,.15);
+}
+
+.alert.success {
+  background: #f0fdf4;
+  color: #16a34a;
+  border-color: rgba(22,163,74,.15);
+}
+
+/* ── Form input groups ── */
+.input-group {
+  margin-bottom: 15px;
+}
+
+.input-group label {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  margin-bottom: 6px;
+  line-height: 1.4;
+}
+
+.input-group input {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1.5px solid var(--border);
+  border-radius: 10px;
+  background: var(--surface-2);
+  font-family: inherit;
+  font-size: 15px;
+  color: var(--text-primary);
+  outline: none;
+  transition: border-color 0.2s, background 0.2s, box-shadow 0.2s;
+}
+
+.input-group input:focus {
+  border-color: var(--bc-gold);
+  background: #fff;
+  box-shadow: 0 0 0 4px rgba(201,168,76,.12);
+}
+
+.input-group input.error {
+  border-color: #dc2626;
+  background: #fef2f2;
+  box-shadow: 0 0 0 4px rgba(220,38,38,.08);
+}
+
+.input-group input::placeholder {
+  color: var(--text-muted);
+  opacity: 0.7;
+}
+
+/* ── Hint text (shown on validation error) ── */
+.input-hint {
+  display: none;
+  font-size: 11.5px;
+  color: #dc2626;
+  margin-top: 5px;
+}
+
+.input-group input.error + .input-hint,
+.input-hint.visible {
+  display: block;
+}
+
+/* ── Password wrap + toggle ── */
+.input-group.password-wrap {
+  position: relative;
+}
+
+.input-group.password-wrap input {
+  padding-right: 46px;
+}
+
+.pw-toggle {
+  position: absolute;
+  right: 11px;
+  /* Sit over the input: label ~20px + 6px margin = ~26px from top of group */
+  top: 26px;
+  height: 46px;
+  width: 36px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+  transition: background 0.15s, color 0.15s;
+}
+
+.pw-toggle:hover {
+  background: rgba(15,40,71,.05);
+  color: var(--text-primary);
+}
+
+/* ── Submit button ── */
+.auth-btn {
+  width: 100%;
+  padding: 13px;
+  background: var(--bc-navy);
+  color: #fff;
+  border: none;
+  border-radius: 14px;
+  font-family: inherit;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 6px;
+  transition: background 0.2s, transform 0.1s, opacity 0.2s;
+}
+
+.auth-btn:hover:not(:disabled) { background: var(--bc-blue); }
+.auth-btn:active:not(:disabled) { transform: scale(0.995); }
+.auth-btn:disabled { opacity: 0.65; cursor: not-allowed; }
+
+/* ── Helper link text ── */
+.auth-link {
+  margin-top: 18px;
+  text-align: center;
+  font-size: 12.5px;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+/* ── Logout button (inside chat toolbar) ── */
+.logout-btn {
+  margin-left: auto;
+  padding: 5px 16px;
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--text-primary);
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s;
+}
+
+.logout-btn:hover {
+  background: var(--bc-warm);
+  border-color: rgba(15,40,71,.15);
+}
+
+/* ── Chat section layout (when auth is complete) ── */
+#chatSection {
+  width: calc(100% - 40px);
+  max-width: 780px;
+  margin: 16px auto;
+  flex: 1;
+}
+
+#chatSection .messages {
+  max-height: none;
+}
+
+/* ── Prompt pills strip (above chat) ── */
+.chat-prompts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  padding: 14px 16px 0;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 14px;
+}
+
+.prompt-pill {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  color: var(--text-secondary);
+  border-radius: 20px;
+  padding: 6px 14px;
+  font-size: 12.5px;
+  font-weight: 500;
+  font-family: inherit;
+  cursor: pointer;
+  white-space: nowrap;
+  box-shadow: var(--shadow-sm);
+  transition: background 0.15s, border-color 0.15s, color 0.15s, box-shadow 0.15s;
+}
+
+.prompt-pill:hover {
+  background: var(--bc-navy);
+  border-color: var(--bc-navy);
+  color: #fff;
+  box-shadow: 0 2px 10px rgba(15,40,71,.18);
+}
+
+/* ── Responsive ── */
+@media (max-width: 900px) {
+  .auth-container {
+    grid-template-columns: 1fr;
+    padding: 20px 16px 24px;
+  }
+  .auth-hero { display: none; }
+  .auth-card { padding: 32px 24px; }
+}
+
+@media (max-width: 480px) {
+  .auth-card { padding: 28px 20px; }
+  .auth-card h2 { font-size: 24px; }
+  #chatSection { width: calc(100% - 24px); margin: 10px auto; }
+}
